@@ -135,6 +135,28 @@ def plot():
     y=numpy.roll(y,-1)
     uiplot.plot.replot()
 
+
+def spo2():
+            
+        global spo2
+        #easypulse = EasyPulse()
+            
+        red=[10,23,52,4,8,92]
+        ir=[1,8,97,85,96,15]
+        """    
+        for i in range(1,100):
+                    
+                ch0 = easypulse.readadc(0, 11, 10, 9, 8)
+                ch2 = easypulse.readadc(2, 11, 10, 9, 8)
+                    
+                red.append(ch0*3.3/1023)
+                ir.append(ch2*3.3/1023)
+        """            
+        spo2 = round(max(red)/max(ir), 2)
+
+        return spo2           
+                         
+  
 def start():
     
         global signal
@@ -166,28 +188,6 @@ def start():
         
 
 
-def spo2():
-            
-        global spo2
-        #easypulse = EasyPulse()
-            
-        red=[10,23,52,4,8,92]
-        ir=[1,8,97,85,96,15]
-        """    
-        for i in range(1,100):
-                    
-                ch0 = easypulse.readadc(0, 11, 10, 9, 8)
-                ch2 = easypulse.readadc(2, 11, 10, 9, 8)
-                    
-                red.append(ch0*3.3/1023)
-                ir.append(ch2*3.3/1023)
-        """            
-        spo2 = round(max(red)/max(ir), 2)
-
-        return spo2           
-                         
-    
-
 if __name__== "__main__":
     
     app = QtGui.QApplication(sys.argv)
@@ -206,7 +206,7 @@ if __name__== "__main__":
     
     uiplot.pushButton_2.clicked.connect(lambda: timer.setInterval(5))
     uiplot.pushButton.clicked.connect(lambda: timer.setInterval(10000))
-    uiplot.pushButton_3.clicked.connect(lambda: sms())
+    uiplot.pushButton_3.clicked.connect(sms())
     
     
     
